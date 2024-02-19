@@ -36,25 +36,29 @@
     <button>Display message box</button>
 
     <script>
-      function displayMessage() {
+      const btn = document.querySelector("button");  // these two lines added to call the displayMessage function when clicked 
+      btn.addEventListener("click", displayMessage); // we dont use displayMessage() because we want to call the function only when the button is clicked
+
+      function displayMessage() { // creates function displayMessage
         const body = document.body;
 
         const panel = document.createElement("div");
         panel.setAttribute("class", "msgBox");
-        body.appendChild(panel);
+        body.appendChild(panel); // creates div panel inside html body
 
-        const msg = document.createElement("p");
+        const msg = document.createElement("p"); // creates paragraph inside panel div
         msg.textContent = "This is a message box";
         panel.appendChild(msg);
 
-        const closeBtn = document.createElement("button");
+        const closeBtn = document.createElement("button"); // creates close button inside panel div
         closeBtn.textContent = "x";
         panel.appendChild(closeBtn);
 
-        closeBtn.addEventListener("click", () =>
-          panel.parentNode.removeChild(panel),
+        closeBtn.addEventListener("click", () => // adds eventListener to closeBtn function 
+          panel.parentNode.removeChild(panel), // and calls anonymous function to delete whole panel
         );
       }
+      
     </script>
   </body>
 </html>
