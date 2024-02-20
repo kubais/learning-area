@@ -41,6 +41,8 @@
     <script>
       const btn = document.querySelector("button");  // these two lines added to call the displayMessage function when clicked 
       btn.addEventListener('click', () => displayMessage('Brian: Hi there, how are you today?', 'chat'));
+      btn.addEventListener('click', () => displayMessage("Your inbox is almost full — delete some mails", "warning"));
+      
       // we need to put it inside an anonymous function so that it isn't in the immediate scope and therefore isn't called immediately. Now it will not be called until the button is clicked.
       //now you can also vary the message inside the parameter to get different messages displayed in the box!
 
