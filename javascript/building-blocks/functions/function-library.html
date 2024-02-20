@@ -39,11 +39,11 @@
       return num;
     }
 
-    input.addEventListener("change", () => {
+    input.addEventListener("change", () => { //By adding a listener to the change event, this function runs whenever the change event fires on the text input — that is when a new value is entered into the text input, and submitted (e.g., enter a value, then un-focus the input by pressing Tab or Return). When this anonymous function runs, the value in the input is stored in the num constant.
       const num = parseFloat(input.value);
-      if (isNaN(num)) {
+      if (isNaN(num)) { // The if statement prints an error message if the entered value is not a number. The condition checks if the expression isNaN(num) returns true. The isNaN() function tests whether the num value is not a number — if so, it returns true, and if not, it returns false.
         para.textContent = "You need to enter a number!";
-      } else {
+      } else { // If the condition returns false, the num value is a number and the function prints out a sentence inside the paragraph element that states the square, cube, and factorial values of the number. The sentence calls the squared(), cubed(), and factorial() functions to calculate the required values.
         para.textContent = `${num} squared is ${squared(num)}. `;
         para.textContent += `${num} cubed is ${cubed(num)}. `;
         para.textContent += `${num} factorial is ${factorial(num)}. `;
