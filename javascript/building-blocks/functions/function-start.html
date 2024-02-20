@@ -10,7 +10,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        width: 200px;
+        width: 242px;
         background: #eee;
       }
 
@@ -18,6 +18,9 @@
         line-height: 1.5;
         padding: 10px 20px;
         color: #333;
+        padding-left: 82px;
+        background-position: 25px center;
+        background-repeat: no-repeat;
       }
 
       .msgBox button {
@@ -37,9 +40,11 @@
 
     <script>
       const btn = document.querySelector("button");  // these two lines added to call the displayMessage function when clicked 
-      btn.addEventListener("click", displayMessage); // we dont use displayMessage() because we want to call the function only when the button is clicked
+      btn.addEventListener('click', () => displayMessage('Brian: Hi there, how are you today?', 'chat'));
+      // we need to put it inside an anonymous function so that it isn't in the immediate scope and therefore isn't called immediately. Now it will not be called until the button is clicked.
+      //now you can also vary the message inside the parameter to get different messages displayed in the box!
 
-      function displayMessage() { // creates function displayMessage
+      function displayMessage(msgText, msgType) { // creates function displayMessage
         const body = document.body;
 
         const panel = document.createElement("div");
@@ -47,7 +52,7 @@
         body.appendChild(panel); // creates div panel inside html body
 
         const msg = document.createElement("p"); // creates paragraph inside panel div
-        msg.textContent = "This is a message box";
+        msg.textContent = msgText;
         panel.appendChild(msg);
 
         const closeBtn = document.createElement("button"); // creates close button inside panel div
@@ -57,7 +62,18 @@
         closeBtn.addEventListener("click", () => // adds eventListener to closeBtn function 
           panel.parentNode.removeChild(panel), // and calls anonymous function to delete whole panel
         );
+        if (msgType === "warning") {
+          msg.style.backgroundImage = "url(icons/warning.png)";
+          panel.style.backgroundColor = "red";
+        } else if (msgType === "chat") {
+          msg.style.backgroundImage = "url(icons/chat.png)";
+          panel.style.backgroundColor = "aqua";
+        } else {
+          msg.style.paddingLeft = "20px";
+        }
+        // Here, if the msgType parameter is set as 'warning', the warning icon is displayed and the panel's background color is set to red. If it is set to 'chat', the chat icon is displayed and the panel's background color is set to aqua blue. If the msgType parameter is not set at all (or to something different), then the else { } part of the code comes into play, and the paragraph is given default padding and no icon, with no background panel color set either. This provides a default state if no msgType parameter is provided, meaning that it is an optional parameter!
       }
+      
       
     </script>
   </body>
