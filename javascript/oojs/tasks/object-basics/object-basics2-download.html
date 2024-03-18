@@ -29,7 +29,22 @@
     let bandInfo;
 
     // Add your code here
+    let myband = {name: 'U2',
+      nationality: 'irish',
+      genre: 'POP',
+      members: 'Bono',
+      formed: 1980,
+      split: false,
+      albums: [{
+        name: 'Zooropa',
+        released: 1985},
+        {name: 'Pop',
+        released: 1990}],
+    };
 
+    bandInfo = `My favourite band is ${myband.name}. It's founding member is ${myband.members}
+     and his nationality is ${myband.nationality}. Band was founded in ${myband.formed}, music style is predominantly ${myband.genre} and their first published album was
+      ${myband.albums[0].name}, released in ${myband.albums[0].released}.`
 
     // Don't edit the code below here!
 
